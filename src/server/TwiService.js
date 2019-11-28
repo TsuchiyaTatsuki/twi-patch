@@ -1,14 +1,15 @@
-import axios from "axios";
+// const axios = require('axios');
 
-const API_URL = "http://localhost:8080";
-const INSTRUCTOR = "cust";
-
-const NEW_API_URL = `${API_URL}/${INSTRUCTOR}/all`;
-
-class CustDataService {
-  getTimeline() {
-    return axios.get(`${NEW_API_URL}`);
-  }
+class TwiService {
+    getTimeline(user) {
+        console.log(user)
+        // var twi = new twitter({
+        //     consumer_key: "zQlAdcQupsapESry6AFTgCeBR",
+        //     consumer_secret: "6nxezDaMWfpaZlW2YfOe70FxT1ednzeqjo8KX8LOUh8Mt34ykO",
+        //     access_token_key: "3029867080-9AkCgheNPrG7cZ9MkIXdXmqJ0ivy6J9wqpzkj50",
+        //     access_token_secret: "NbIflXBoKI2rPiq2LrdL7vPp89jNohHOnBqwGaDvPqWCU"
+        // });
+    }
 }
 
-export default new CustDataService();
+export default new TwiService();

@@ -34,7 +34,6 @@
               <v-card-text>
                 <v-form>
                   <v-text-field label="Login" name="login" prepend-icon="mdi-account" type="text" />
-
                   <v-text-field
                     id="password"
                     label="Password"
@@ -43,6 +42,7 @@
                     type="password"
                   />
                 </v-form>
+                {{user}}
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
@@ -67,21 +67,22 @@ export default {
     source: String
   },
   data: () => ({
-    user: {},
-    overlay: false
+    overlay: false,
   }),
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  },
   methods: {
     async login() {
       this.overlay = true;
       const provider = new firebase.auth.TwitterAuthProvider();
-      try {
-        await firebase.auth().signInWithPopup(provider);
-      } catch (e) {
-        console.error(e);
-      }
-      this.overlay = false;
-      this.$router.push({ path: "/Home" });
-    }
-  }
+      // try {
+        await firebase.auth().signInWithRedirect(provider);
+      // } 
+    },
+  },
+  async created() {}
 };
 </script>
